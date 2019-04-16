@@ -11,8 +11,10 @@ State::State(){
     TileSet *tileset = new TileSet(64, 64, "assets/img/tileset.png");
     TileMap *tilemap = new TileMap(*go1, "assets/map/tileMap.txt", tileset);
     bg = new Sprite(*go ,"assets/img/ocean.jpg");
+    CameraFollower *follower = new CameraFollower(*go);
     music = new Music("assets/audio/stageState.ogg");
     go->AddComponent(bg);
+    go->AddComponent(follower);
     go1->AddComponent(tilemap);
     music->Play();
     objectArray.emplace_back(go);

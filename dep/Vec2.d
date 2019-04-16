@@ -5,7 +5,7 @@ bin/Vec2.o: src/Vec2.cpp src/../include/Vec2.h src/../include/Game.h \
  src/../include/Resources.h src/../include/Music.h src/../include/Sound.h \
  src/../include/Face.h src/../include/InputManager.h \
  src/../include/Vec2.h src/../include/TileMap.h src/../include/TileSet.h \
- src/../include/Camera.h
+ src/../include/Camera.h src/../include/CameraFollower.h
 
 src/../include/Vec2.h:
 
@@ -40,3 +40,5 @@ src/../include/TileMap.h:
 src/../include/TileSet.h:
 
 src/../include/Camera.h:
+
+src/../include/CameraFollower.h:

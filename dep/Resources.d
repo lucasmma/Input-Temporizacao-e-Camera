@@ -3,7 +3,7 @@ bin/Resources.o: src/Resources.cpp include/Resources.h include/Game.h \
  include/Component.h include/GameObject.h include/Rect.h \
  include/Resources.h include/Music.h include/Sound.h include/Face.h \
  include/InputManager.h include/Vec2.h include/TileMap.h \
- include/TileSet.h include/Camera.h
+ include/TileSet.h include/Camera.h include/CameraFollower.h
 
 include/Resources.h:
 
@@ -38,3 +38,5 @@ include/TileMap.h:
 include/TileSet.h:
 
 include/Camera.h:
+
+include/CameraFollower.h:
