@@ -77,7 +77,7 @@ bool TileMap::Is(std::string type){
 void TileMap::RenderLayer(int layer, int cameraX, int cameraY){
     for (int w = 0; w < tileSet->GetTileWidth(); w++) {
       for (int h = 0; h < tileSet->GetTileHeight(); h++) {
-          tileSet->RenderTile(At(w,h,layer),(w*tileSet->GetTileWidth()),(h*tileSet->GetTileHeight()));
+          tileSet->RenderTile(At(w,h,layer),(w*tileSet->GetTileWidth()) - cameraX,(h*tileSet->GetTileHeight()) - cameraY);
       }
     }
 

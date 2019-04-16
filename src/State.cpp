@@ -50,7 +50,7 @@ void State::Update(float dt){
     if(InputManager::GetInstance().QuitRequested() || InputManager::GetInstance().KeyPress(ESCAPE_KEY)){
         quitRequest = true;
     }
-    if(InputManager::GetInstance().KeyPress(SDLK_SPACE)){
+    if(InputManager::GetInstance().KeyIsDown(SDLK_SPACE)){
         Vec2 objPos = Vec2(200 , 0 ).GetRotated( -PI + PI*(rand() % 1001)/500.0 ) + Vec2(InputManager::GetInstance().GetMouseX(), InputManager::GetInstance().GetMouseY());
         AddObject(objPos.x,objPos.y);
     }
@@ -67,12 +67,13 @@ void State::Update(float dt){
 
 void State::Render(){
     for (unsigned int i = 0; i < objectArray.size(); i++) {
-        TileMap *tilemap = dynamic_cast<TileMap*>(objectArray[i].get()->GetComponent("TileMap"));
-        objectArray[i].get()->Render();
+        Component* tilemap = objectArray[i]->GetComponent("TileMap");
         if(tilemap){
-            objectArray[i].get()->box.x = Camera::pos.x;
-            objectArray[i].get()->box.y = Camera::pos.y;
+            objectArray[i]->box.x = Camera::pos.x;
+            objectArray[i]->box.y = Camera::pos.y;
         }
+
+        objectArray[i].get()->Render();
     }
 }
 
@@ -133,8 +134,8 @@ void State::AddObject(int mouseX, int mouseY){
         GameObject *go = new GameObject();
         Face *fc = new Face(*go);
         Sprite *sp = new Sprite(*go, "assets/img/penguinface.png");
-        go->box.x = mouseX;
-        go->box.y = mouseY;
+        go->box.x = mouseX + Camera::pos.x;
+        go->box.y = mouseY + Camera::pos.y;
         go->AddComponent(fc);
         go->AddComponent(sp);
         Sound *sd = new Sound(*go, "assets/audio/boom.wav");
