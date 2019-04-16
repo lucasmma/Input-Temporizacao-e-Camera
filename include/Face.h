@@ -7,6 +7,7 @@
 #define FACE_H
 
 #include "Component.h"
+#include "InputManager.h"
 
 class Face : public Component {
 public:

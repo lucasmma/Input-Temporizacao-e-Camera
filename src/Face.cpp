@@ -15,7 +15,18 @@ void Face::Damage(int damage){
     }
 }
 
-void Face::Update(float dt){}
+void Face::Update(float dt){
+    Face *face = dynamic_cast<Face*>(associated.GetComponent("Face"));
+    if(InputManager::GetInstance().MousePress(LEFT_MOUSE_BUTTON)){
+		if(associated.box.Contains(InputManager::GetInstance().GetMouseX(), InputManager::GetInstance().GetMouseY()) ) {
+			if ( nullptr != face) {
+				// Aplica dano
+				face->Damage(std::rand() % 10 + 10);
+				// Sai do loop (só queremos acertar um)
+			}
+		}
+    }
+}
 
 void Face::Render(){}
 

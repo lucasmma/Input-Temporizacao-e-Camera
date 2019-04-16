@@ -62,10 +62,8 @@ int& TileMap::At(int x, int y, int z){
 }
 
 void TileMap::Render(){
-  int cameraX = 0;
-  int cameraY = 0;
     for (int deepth = 0; deepth < GetDepth(); deepth++) {
-      RenderLayer(deepth,cameraX,cameraY);
+      RenderLayer(deepth,associated.box.x,associated.box.y);
     }
 
 }

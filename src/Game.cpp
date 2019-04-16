@@ -25,6 +25,8 @@ Game::Game(std::string title, int width, int height){
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     }
     state = new State();
+    dt = 0;
+    frameStart = 0;
 }
 
 Game::~Game(){
@@ -61,11 +63,22 @@ SDL_Renderer* Game::GetRenderer(){
 
 void Game::Run(){
     while(state->QuitRequest() != true){
-        float dt=0;
+        CalculateDeltaTime();
+        InputManager::GetInstance().Update();
         state->Update(dt);
         state->Render();
         SDL_RenderPresent(renderer);
         SDL_Delay(33);
     }
     return;
+}
+
+void Game::CalculateDeltaTime(){
+    dt = SDL_GetTicks() - frameStart;
+    frameStart = SDL_GetTicks();
+    dt = dt / 1000;
+}
+
+float Game::GetDeltaTime(){
+    return dt;
 }

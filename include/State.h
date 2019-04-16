@@ -13,6 +13,8 @@
 #include "Face.h"
 #include "Vec2.h"
 #include "TileMap.h"
+#include "InputManager.h"
+#include "Camera.h"
 
 class State{
 public:
@@ -28,7 +30,6 @@ private:
     Sprite* bg;
     Music* music;
     bool quitRequest;
-    void Input();
     void AddObject(int mouseX, int mouseY);
     std::vector<std::unique_ptr<GameObject>> objectArray;
 };
